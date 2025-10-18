@@ -12,10 +12,19 @@ from typing import TYPE_CHECKING
 
 from jsktoolbox.basetool import BData
 from jsktoolbox.raisetool import Raise
+from jsktoolbox.attribtool import ReadOnlyClass
 
 if TYPE_CHECKING:
     from py_math_wizards.question_generator import QuestionGenerator
     from py_math_wizards.statistics import Statistics
+
+
+class _Keys(object, metaclass=ReadOnlyClass):
+    """Keys class for internal purpose only."""
+
+    STATISTICS = "statistics"
+    GENERATOR = "generator"
+    RUNNING = "running"
 
 
 class MathWizards(BData):
@@ -26,12 +35,13 @@ class MathWizards(BData):
         from py_math_wizards.question_generator import QuestionGenerator
         from py_math_wizards.statistics import Statistics
 
-        self._data["statistics"] = Statistics()
-        self._data["generator"] = QuestionGenerator(0, 10)
-        self._data["running"] = True
+        self._data[_Keys.STATISTICS] = Statistics()
+        self._data[_Keys.GENERATOR] = QuestionGenerator(0, 10)
+        self._data[_Keys.RUNNING] = True
 
         # Setup signal handler for Ctrl+C
         signal.signal(signal.SIGINT, self._signal_handler)
+        signal.signal(signal.SIGTERM, self._signal_handler)
 
     def _signal_handler(self, signum: int, frame) -> None:
         """Handle SIGINT (Ctrl+C) signal.
@@ -40,7 +50,7 @@ class MathWizards(BData):
         * signum: int - Signal number.
         * frame: frame - Current stack frame.
         """
-        self._data["running"] = False
+        self._data[_Keys.RUNNING] = False
         print("\n\nInterrupted by user...")
 
     def _clear_screen(self) -> None:
@@ -97,8 +107,8 @@ class MathWizards(BData):
         from py_math_wizards.messages import Messages
 
         # Generate question
-        a, b, correct_answer = self._data["generator"].generate()
-        question = self._data["generator"].format_question(a, b)
+        a, b, correct_answer = self._data[_Keys.GENERATOR].generate()
+        question = self._data[_Keys.GENERATOR].format_question(a, b)
 
         # Get user answer
         try:
@@ -107,12 +117,12 @@ class MathWizards(BData):
             return False
 
         # Check answer
-        self._data["statistics"].add_question()
+        self._data[_Keys.STATISTICS].add_question()
         if user_answer == correct_answer:
-            self._data["statistics"].add_correct()
+            self._data[_Keys.STATISTICS].add_correct()
             print(f"✓ {Messages.get_success_message()}")
         else:
-            self._data["statistics"].add_incorrect()
+            self._data[_Keys.STATISTICS].add_incorrect()
             print(
                 f"✗ {Messages.get_failure_message()} (Correct answer: {correct_answer})"
             )
@@ -128,12 +138,12 @@ class MathWizards(BData):
         self._show_greeting()
 
         # Main game loop
-        while self._data["running"]:
+        while self._data[_Keys.RUNNING]:
             if not self._ask_question():
                 break
 
         # Show final statistics
-        print(self._data["statistics"].get_report())
+        print(self._data[_Keys.STATISTICS].get_report())
 
 
 def main() -> None:

@@ -9,6 +9,14 @@ import random
 from typing import Tuple
 
 from jsktoolbox.basetool import BData
+from jsktoolbox.attribtool import ReadOnlyClass
+
+
+class _Keys(object, metaclass=ReadOnlyClass):
+    """Keys class for internal purpose only."""
+
+    MIN = "min"
+    MAX = "max"
 
 
 class QuestionGenerator(BData):
@@ -21,8 +29,8 @@ class QuestionGenerator(BData):
         * min_value: int - Minimum value for operands (default: 0).
         * max_value: int - Maximum value for operands (default: 10).
         """
-        self._data["min"] = min_value
-        self._data["max"] = max_value
+        self._data[_Keys.MIN] = min_value
+        self._data[_Keys.MAX] = max_value
 
     def generate(self) -> Tuple[int, int, int]:
         """Generate a new multiplication question.
@@ -30,8 +38,8 @@ class QuestionGenerator(BData):
         ### Returns:
         Tuple[int, int, int] - (first_operand, second_operand, correct_answer).
         """
-        a = random.randint(self._data["min"], self._data["max"])
-        b = random.randint(self._data["min"], self._data["max"])
+        a = random.randint(self._data[_Keys.MIN], self._data[_Keys.MAX])
+        b = random.randint(self._data[_Keys.MIN], self._data[_Keys.MAX])
         answer = a * b
         return (a, b, answer)
 

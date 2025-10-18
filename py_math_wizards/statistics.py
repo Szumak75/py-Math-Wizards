@@ -6,6 +6,15 @@ Purpose: Statistics module for tracking game statistics.
 """
 
 from jsktoolbox.basetool import BData
+from jsktoolbox.attribtool import ReadOnlyClass
+
+
+class _Keys(object, metaclass=ReadOnlyClass):
+    """Keys class for internal purpose only."""
+
+    TOTAL_QUESTIONS = "total_questions"
+    CORRECT_ANSWERS = "correct_answers"
+    INCORRECT_ANSWERS = "incorrect_answers"
 
 
 class Statistics(BData):
@@ -13,21 +22,21 @@ class Statistics(BData):
 
     def __init__(self) -> None:
         """Initialize Statistics."""
-        self._data["total_questions"] = 0
-        self._data["correct_answers"] = 0
-        self._data["incorrect_answers"] = 0
+        self._data[_Keys.TOTAL_QUESTIONS] = 0
+        self._data[_Keys.CORRECT_ANSWERS] = 0
+        self._data[_Keys.INCORRECT_ANSWERS] = 0
 
     def add_question(self) -> None:
         """Increment total questions counter."""
-        self._data["total_questions"] += 1
+        self._data[_Keys.TOTAL_QUESTIONS] += 1
 
     def add_correct(self) -> None:
         """Increment correct answers counter."""
-        self._data["correct_answers"] += 1
+        self._data[_Keys.CORRECT_ANSWERS] += 1
 
     def add_incorrect(self) -> None:
         """Increment incorrect answers counter."""
-        self._data["incorrect_answers"] += 1
+        self._data[_Keys.INCORRECT_ANSWERS] += 1
 
     @property
     def total_questions(self) -> int:
