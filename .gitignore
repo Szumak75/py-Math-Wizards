@@ -1,3 +1,6 @@
+# Project-specific ignores
+tmp/
+py_math_wizards/data/
 # Python
 __pycache__/
 *.py[cod]
