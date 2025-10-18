@@ -2,7 +2,7 @@
 
 - język projektu: angielski
 - język programowania: python3 >=3.10, <4
-- moduł podstawowy w zależnościach: jsktoolbox
+- moduł podstawowy w zależnościach: jsktoolbox@^1.2.1
 - menadżer projektu: poetry
 - testy jednostkowe: pytest
 - repozytorium: git
@@ -11,7 +11,7 @@
 
 # Zadanie pierwsze
 
-- Na podstawie szablonu ./AGENTS-TEMPLATE.md wygeneruj konfogurację projektową AGENTS.md i wykonaj do niej link symboliczny GEMINI.md
+- Na podstawie szablonu ./AGENTS-TEMPLATE.md wygeneruj konfigurację projektową AGENTS.md i wykonaj do niej link symboliczny GEMINI.md
 - Dodaj do pyproject.toml wszystkie niezbędne zależności projektowe z kategorii dev i przeprowadź aktualizację środowiska wirtualnego.
 - Przy każdej zmianie dbaj o aktualizację AGENTS.md
 - Wygeneruj .gitignore stosownie do założeń projektowych
@@ -20,16 +20,17 @@
 
 Celem projektu jest stworzenie aplikacji konsolowej, która będzie pomagała dzieciom w nauce tabliczki mnożenia w zakresie od 0 do 100 na liczbach całkowitych.
 
-## Założenia interfejsu użytkownika:
+## Założenia interfejsu użytkownika
 
 - start aplikacji w terminalu znakowym czyści terminal, wyświetla na nim baner startowy aplikacji (ASCII), poniżej wita użytkownika jednozdaniową zachętą do wykonywania ćwiczenia (najlepiej by była losowana z dużej tablicy uprzednio przygotowanych zwrotów) następnie przechodzi do części zadaniowej, na przykład przed promptem podając zadanie: 2 * 8 = _ - w miejscu '_' użytkownik wpisuje swoją odpowiedź i naciska [enter]. Program sprawdza poprawność i informuje użytkownika o sukcesie lub porażce w sposób opisany w punkcie kolejnym. Rzeczą oczywistą jest, że program oczekuje w odpowiedzi liczb, jeżeli otrzyma odpowiedź z poza zakresu liczbowego, informuje użytkownika, że oczekuje odpowiedzi w postaci liczby całkowitej (w tym przypadku) i ponawia to samo pytanie nie traktują odpowiedzi jako błędną ani dobrą.
-- w katalogu py_math_wizards/data znajdują się dwa pliki: ok.txt oraz bad.txt zawierające listę proponowanych odpowiedzi potwierdzających sukces jak i porażkę użytkownika podczas rozwiązywania zadania, powinny być losowo wyświetlane w zależności od tego czy odpowiedź była poprawna czy błędna.
+- w katalogu py_math_wizards/data znajdują się dwa pliki: ok.txt oraz bad.txt zawierające listę proponowanych odpowiedzi potwierdzających sukces jak i porażkę użytkownika podczas rozwiązywania zadania, powinny być losowo wyświetlane w zależności od tego czy odpowiedź była poprawna czy błędna. Przejrzyj je, odpowiedzi niestosowne do formy zadania zastąp nowymi propozycjami bardziej właściwymi do kontekstu.
 - program zlicza ilość wygenerowanych zadań, ilość odpowiedzi poprawnych oraz ilość odpowiedzi błędnych.
 - jeżeli użytkownik naciśnie [ctrl]-[c] program przechwytuje to żądanie i przechodzi w tryb kończenia swojej pracy. Przed wyjściem na konsoli wyświetla raport statystyczny sesji: ilość zadań oraz procent odpowiedzi poprawnych.
 
-## Założenia implementacyjne:
+## Założenia implementacyjne
 
-- całość programu napisana w architekturze obiektowej, każda klasa w osobnym module. Klasa główna w module 'py_match_wizard.main' lub 'py_math_wizard' przy użyciu leniwych importów.
+- całość programu napisana w architekturze obiektowej, każda klasa w osobnym module. Klasa główna w module 'py_match_wizard.main'
+- import klas z 'py_math_wizard' przy użyciu leniwych importów
 - każda klasa ma być dziedziczona z jsktoolbox.attribtool.NoNewAttributes, w przypadku potrzeby korzystania ze zmiennych klasowych należy dziedziczyć z klasy kontenerowej jsktoolbox.basetool.BData i używać jej mechanizmów tworzenia zmiennych w słownikach.
 - wszystko co się da powinno być pokryte testami jednostkowymi
 - testy jednostkowe napisane w architekturze obiektowej, klasy dziedziczone z unittest.TestCase i podobnych zależnie od potrzeby.
