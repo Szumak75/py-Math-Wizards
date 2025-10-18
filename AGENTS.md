@@ -46,6 +46,8 @@
 - `*.tmp`
 - `tmp/**`
 - `temp/**`
+- `node_modules/**`
+- `package-lock.json`
 
 ---
 
@@ -165,6 +167,17 @@ raise Raise.error(message, exception_type, class_name, frame)
 - `CHANGELOG.md` - historia zmian (Keep a Changelog format)
 - `AGENTS.md` - konfiguracja AI
 
+**Formatowanie dokumentacji Markdown:**
+
+- **Tool**: `prettier` - formatowanie plików Markdown
+  - Uruchamianie: `npm run format:md`
+  - Sprawdzanie: `npm run format:check`
+  - Konfiguracja: `.prettierrc.json`
+  - Instalacja: `npm install` (prettier zainstalowany w `~/.local/node_modules/`)
+- Zachowaj czytelność i spójność formatowania
+- Używaj 88 znaków szerokości linii (zgodnie z black)
+- Preserve prose wrapping dla plików `.md`
+
 ### Ogólne zalecenia
 
 **Komunikacja z AI Assistant:**
@@ -225,7 +238,7 @@ design choices, and its role (e.g., utility, data structure).]
 
 #### Function/Method-level Docstring
 
-```python
+````python
 """Short, one-line summary of what the function does.
 
 [Optional: More detailed explanation of the function's logic,
@@ -245,9 +258,11 @@ its use cases, or any important algorithms used.]
 ```python
 >>> function_name(arg1, arg2)
 expected_result
-```
+````
+
 """
-```
+
+````
 
 ---
 
@@ -276,7 +291,7 @@ flake8 = "^7.0.0"
 mypy = "^1.11.0"
 isort = "^5.13.0"
 pytest-cov = "^5.0.0"
-```
+````
 
 ---
 
@@ -335,13 +350,21 @@ pytest-cov = "^5.0.0"
 
 ## Wersjonowanie
 
-- **Wersja**: 1.0.0
+- **Wersja**: 1.1.0
 - **Data utworzenia**: 2025-10-18
 - **Autor**: Jacek 'Szumak' Kotlarski
 - **Ostatnia aktualizacja**: 2025-10-18
 
 ### Historia zmian
 
+- `1.1.0` (2025-10-18): Dodano formatowanie dokumentów Markdown
+  - Dodano prettier jako narzędzie do formatowania plików Markdown
+  - Utworzono package.json z skryptami npm
+  - Utworzono konfigurację .prettierrc.json
+  - Utworzono .prettierignore
+  - Zaktualizowano .gitignore (node_modules, package-lock.json)
+  - Zaktualizowano AGENTS.md (sekcja formatowania dokumentacji)
+  - Sformatowano README.md i AGENTS.md przez prettier
 - `1.0.0` (2025-10-18): Utworzenie konfiguracji projektu py-Math-Wizards
   - Utworzono AGENTS.md i link symboliczny GEMINI.md
   - Dodano zależności dev do pyproject.toml

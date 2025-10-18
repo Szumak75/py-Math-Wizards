@@ -1,0 +1,29 @@
+{
+  "name": "py-math-wizards",
+  "version": "1.0.0",
+  "description": "[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/) [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) [![Poetry](https://img.shields.io/badge/dependency%20manager-Poetry-blue)](https://python-poetry.org/)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "format:md": "~/.local/node_modules/.bin/prettier --write \"**/*.md\"",
+    "format:check": "~/.local/node_modules/.bin/prettier --check \"**/*.md\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Szumak75/py-Math-Wizards.git"
+  },
+  "keywords": [],
+  "author": "Jacek 'Szumak' Kotlarski <szumak@virthost.pl>",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Szumak75/py-Math-Wizards/issues"
+  },
+  "homepage": "https://github.com/Szumak75/py-Math-Wizards#readme",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

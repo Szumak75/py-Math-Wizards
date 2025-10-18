@@ -31,17 +31,20 @@ Math Wizards is an educational console application designed to make learning mul
 ### Using Poetry (Recommended)
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd py-Math-Wizards
 ```
 
 2. Install dependencies:
+
 ```bash
 poetry install
 ```
 
 3. Run the application:
+
 ```bash
 poetry run math-wizards
 ```
@@ -55,6 +58,7 @@ The project includes a bash script that automatically manages the virtual enviro
 ```
 
 The script will:
+
 - Detect the project directory (works from any location)
 - Check for existing `.venv` directory
 - Create virtual environment from `requirements.txt` if needed
@@ -63,17 +67,20 @@ The script will:
 ### Manual Installation
 
 1. Create virtual environment:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
 2. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 3. Run the application:
+
 ```bash
 python3 -m py_math_wizards.main
 ```
@@ -154,21 +161,25 @@ poetry install
 The project uses the following tools (configured in `pyproject.toml`):
 
 - **black**: Code formatting
+
   ```bash
   poetry run black .
   ```
 
 - **isort**: Import sorting
+
   ```bash
   poetry run isort .
   ```
 
 - **pycodestyle**: PEP 8 compliance
+
   ```bash
   poetry run pycodestyle .
   ```
 
 - **flake8**: Linting
+
   ```bash
   poetry run flake8 .
   ```
@@ -194,6 +205,7 @@ poetry run pytest tests/test_main.py
 ### Code Style
 
 The project follows:
+
 - PEP 8 style guide
 - Google-style docstrings
 - Type hints (PEP 484)
