@@ -5,6 +5,7 @@ Created: 2025-10-18
 Purpose: Unit tests for QuestionGenerator module.
 """
 
+from typing import List, Tuple
 import unittest
 
 from py_math_wizards.question_generator import QuestionGenerator
@@ -17,21 +18,21 @@ class TestQuestionGenerator(unittest.TestCase):
         """Set up test fixtures."""
         self.generator = QuestionGenerator(0, 10)
 
-    def test_generate_returns_tuple(self):
+    def test_generate_returns_tuple(self) -> None:
         """Test that generate returns a tuple of three integers."""
-        result = self.generator.generate()
+        result: Tuple[int, int, int] = self.generator.generate()
         self.assertIsInstance(result, tuple)
         self.assertEqual(len(result), 3)
         self.assertIsInstance(result[0], int)
         self.assertIsInstance(result[1], int)
         self.assertIsInstance(result[2], int)
 
-    def test_generate_correct_answer(self):
+    def test_generate_correct_answer(self) -> None:
         """Test that the generated answer is correct."""
         a, b, answer = self.generator.generate()
         self.assertEqual(answer, a * b)
 
-    def test_generate_within_range(self):
+    def test_generate_within_range(self) -> None:
         """Test that generated numbers are within specified range."""
         for _ in range(20):
             a, b, _ = self.generator.generate()
@@ -40,7 +41,7 @@ class TestQuestionGenerator(unittest.TestCase):
             self.assertGreaterEqual(b, 0)
             self.assertLessEqual(b, 10)
 
-    def test_custom_range(self):
+    def test_custom_range(self) -> None:
         """Test generator with custom range."""
         generator = QuestionGenerator(5, 8)
         for _ in range(20):
@@ -50,7 +51,7 @@ class TestQuestionGenerator(unittest.TestCase):
             self.assertGreaterEqual(b, 5)
             self.assertLessEqual(b, 8)
 
-    def test_format_question(self):
+    def test_format_question(self) -> None:
         """Test question formatting."""
         question = self.generator.format_question(5, 3)
         self.assertIsInstance(question, str)
@@ -59,11 +60,11 @@ class TestQuestionGenerator(unittest.TestCase):
         self.assertIn("×", question)
         self.assertIn("=", question)
 
-    def test_format_question_various_inputs(self):
+    def test_format_question_various_inputs(self) -> None:
         """Test formatting with various inputs."""
-        test_cases = [(0, 0), (1, 1), (10, 10), (5, 7)]
+        test_cases: List[Tuple[int, int]] = [(0, 0), (1, 1), (10, 10), (5, 7)]
         for a, b in test_cases:
-            question = self.generator.format_question(a, b)
+            question: str = self.generator.format_question(a, b)
             self.assertIn(str(a), question)
             self.assertIn(str(b), question)
 
