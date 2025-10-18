@@ -17,7 +17,7 @@ Math Wizards is an educational console application designed to make learning mul
 - **Input Validation**: Accepts only integer answers, prompts for re-entry on invalid input
 - **Instant Feedback**: Random success/failure messages to keep learning engaging
 - **Session Statistics**: Real-time tracking of questions asked, correct answers, and wrong answers
-- **Graceful Exit**: Ctrl+C handling with final performance report (percentage of correct answers)
+- **Graceful Exit**: Ctrl+D handling with final performance report (percentage of correct answers)
 - **Data Security**: Messages encrypted using ROT13 algorithm
 
 ## Requirements
@@ -88,7 +88,7 @@ After starting the application:
 4. Enter only integer numbers (validation enforced)
 5. Receive immediate feedback on your answer
 6. Continue solving problems - statistics are tracked automatically
-7. Press Ctrl+C at any time to see your final performance report
+7. Press Ctrl+D at any time to see your final performance report
 
 ### Example Session
 
@@ -231,7 +231,7 @@ Each class is in a separate module and uses lazy imports for better performance.
   - Core multiplication practice functionality
   - Interactive console interface
   - Statistics tracking
-  - Signal handling (Ctrl+C)
+  - Signal handling (Ctrl+D)
   - Unit tests (26 tests, 100% pass)
 
 ## License
