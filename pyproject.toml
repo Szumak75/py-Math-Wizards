@@ -1,6 +1,6 @@
 [project]
 name = "py-math-wizards"
-version = "0.1.0"
+version = "0.1.1"
 description = "Console application to help children learn multiplication tables"
 authors = [
     {name = "Jacek 'Szumak' Kotlarski",email = "szumak@virthost.pl"}
